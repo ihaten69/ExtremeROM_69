@@ -4,6 +4,7 @@ REGION=$(echo -n "$TARGET_FIRMWARE" | cut -d "/" -f 2)
 if [ ! -d "$FW_DIR/${MODEL}_${REGION}/system/system/app/UwbUci" ]; then
     echo "Removing UWB blobs..."
     DELETE_FROM_WORK_DIR "system" "system/app/UwbTest"
+    DELETE_FROM_WORK_DIR "system" "system/app/UwbRROverlayMccMncRegulation"
     DELETE_FROM_WORK_DIR "system" "system/etc/init/init.system.uwb.rc"
     DELETE_FROM_WORK_DIR "system" "system/etc/permissions/com.samsung.android.uwb_extras.xml"
     DELETE_FROM_WORK_DIR "system" "system/framework/com.samsung.android.uwb_extras.jar"

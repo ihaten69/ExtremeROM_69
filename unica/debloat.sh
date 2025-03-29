@@ -70,11 +70,9 @@ priv-app/SearchSelector
 SYSTEM_DEBLOAT+="
 system/app/DRParser
 system/app/HMT
-system/app/DictDiotekForSec
 system/app/FactoryAirCommandManager
 system/app/FBAppManager_NS
 system/app/PlayAutoInstallConfig
-system/app/SamsungCalendar
 system/app/SamsungPassAutofill_v1
 system/app/StickerCenter
 system/app/Fast
@@ -99,10 +97,8 @@ system/app/SamsungTTSVoice_vi_VN_f00
 system/etc/PF_TA
 system/etc/init/samsung_pass_authenticator_service.rc
 system/etc/permissions/privapp-permissions-com.microsoft.skydrive.xml
-system/etc/permissions/privapp-permissions-com.samsung.android.app.kfa.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.authfw.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.dkey.xml
-system/etc/permissions/privapp-permissions-com.samsung.android.game.gamehome.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.providers.factory.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.samsungpass.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.spayfw.xml
@@ -110,7 +106,6 @@ system/etc/permissions/privapp-permissions-com.sec.android.diagmonagent.xml
 system/etc/permissions/privapp-permissions-com.sec.android.soagent.xml
 system/etc/permissions/privapp-permissions-com.sec.bcservice.xml
 system/etc/permissions/privapp-permissions-com.wssyncmldm.xml
-system/etc/permissions/privapp-permissions-de.axelspringer.yana.zeropage.xml
 system/etc/permissions/privapp-permissions-meta.xml
 system/etc/sysconfig/digitalkey.xml
 system/etc/sysconfig/meta-hiddenapi-package-allowlist.xml
@@ -123,7 +118,6 @@ system/preload/Facebook_stub_preload
 system/priv-app/AuthFramework
 system/priv-app/AREmojiEditor
 system/priv-app/AREmoji
-system/priv-app/AvatarEmojiEditor
 system/priv-app/SamsungSmartSuggestions
 system/priv-app/YourPhone_P1_5
 system/priv-app/StickerFaceARAvatar
@@ -136,7 +130,6 @@ system/priv-app/FBInstaller_NS
 system/priv-app/FBServices
 system/priv-app/FactoryTestProvider
 system/priv-app/FotaAgent
-system/priv-app/GameHome
 system/priv-app/ModemServiceMode
 system/priv-app/OneDrive_Samsung_v3
 system/priv-app/OMCAgent5
@@ -145,7 +138,6 @@ system/priv-app/SOAgent75
 system/priv-app/SamsungCarKeyFw
 system/priv-app/SamsungPass
 system/priv-app/SPPPushClient
-system/priv-app/Upday
 "
 
 # Gallery AI Semantic Search

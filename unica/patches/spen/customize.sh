@@ -3,15 +3,12 @@ REGION=$(echo -n "$TARGET_FIRMWARE" | cut -d "/" -f 2)
 
 if [ ! -d "$FW_DIR/${MODEL}_${REGION}/system/system/media/audio/pensounds" ]; then
     echo "Debloating SPen Blobs"
-    DELETE_FROM_WORK_DIR "system" "system/app/AirGlance"
-    DELETE_FROM_WORK_DIR "system" "system/app/LiveDrawing"
     DELETE_FROM_WORK_DIR "system" "system/etc/default-permissions/default-permissions-com.samsung.android.service.aircommand.xml"
     DELETE_FROM_WORK_DIR "system" "system/etc/permissions/privapp-permissions-com.samsung.android.app.readingglass.xml"
     DELETE_FROM_WORK_DIR "system" "system/etc/permissions/privapp-permissions-com.samsung.android.service.aircommand.xml"
     DELETE_FROM_WORK_DIR "system" "system/etc/permissions/privapp-permissions-com.samsung.android.service.airviewdictionary.xml"
     DELETE_FROM_WORK_DIR "system" "system/etc/sysconfig/airviewdictionaryservice.xml"
     DELETE_FROM_WORK_DIR "system" "system/etc/public.libraries-smps.samsung.txt"
-    DELETE_FROM_WORK_DIR "system" "system/lib/libsmpsft.smps.samsung.so"
     DELETE_FROM_WORK_DIR "system" "system/lib64/libsmpsft.smps.samsung.so"
     DELETE_FROM_WORK_DIR "system" "system/media/audio/pensounds"
     DELETE_FROM_WORK_DIR "system" "system/priv-app/AirCommand"

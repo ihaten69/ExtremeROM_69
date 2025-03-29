@@ -1,7 +1,6 @@
 DELETE_FROM_WORK_DIR "system" "system/priv-app/SmartManager_v5"
-DELETE_FROM_WORK_DIR "system" "system/priv-app/SmartManager_v6_DeviceSecurity"
+DELETE_FROM_WORK_DIR "system" "system/app/SmartManager_v6_DeviceSecurity"
 DELETE_FROM_WORK_DIR "system" "system/etc/permissions/privapp-permissions-com.samsung.android.lool.xml"
-DELETE_FROM_WORK_DIR "system" "system/etc/permissions/privapp-permissions-com.samsung.android.sm.devicesecurity_v6.xml"
 
 ADD_TO_WORK_DIR "pa3qzcx" "system" \
     "system/etc/permissions/privapp-permissions-com.samsung.android.applock.xml" 0 0 644 "u:object_r:system_file:s0"

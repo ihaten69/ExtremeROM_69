@@ -22,15 +22,13 @@ ROM_CODENAME="Eureka"
 
 # Source ROM firmware
 case "$TARGET_SINGLE_SYSTEM_IMAGE" in
-    # Qualcomm
-    "qssi_64")
+    "essi")
         # Galaxy S25 Ultra (One UI 7)
         SOURCE_FIRMWARE="SM-S938B/EUX/356597450035295"
         SOURCE_EXTRA_FIRMWARES=()
         SOURCE_API_LEVEL=35
         SOURCE_PRODUCT_FIRST_API_LEVEL=35
-	# S25 does not have VNDK as it got deprecated, but keep this in order to keep VNDK patch working
-        SOURCE_VNDK_VERSION=35
+        SOURCE_VNDK_VERSION=none
         SOURCE_HAS_SYSTEM_EXT=true
         SOURCE_SUPER_GROUP_NAME="qti_dynamic_partitions"
         # SEC Product Feature
@@ -49,14 +47,14 @@ case "$TARGET_SINGLE_SYSTEM_IMAGE" in
         SOURCE_HFR_SUPPORTED_REFRESH_RATE="24,10,30,48,60,80,120"
         SOURCE_HFR_DEFAULT_REFRESH_RATE="120"
         SOURCE_DISPLAY_CUTOUT_TYPE="center"
-        SOURCE_HFR_SEAMLESS_BRT="84,91"
-        SOURCE_HFR_SEAMLESS_LUX="200,2500"
+        SOURCE_HFR_SEAMLESS_BRT=""
+        SOURCE_HFR_SEAMLESS_LUX=""
         SOURCE_IS_ESIM_SUPPORTED=true
         SOURCE_MDNIE_SUPPORT_HDR_EFFECT=true
         SOURCE_MDNIE_SUPPORTED_MODES="65303"
         SOURCE_MDNIE_WEAKNESS_SOLUTION_FUNCTION="3"
         SOURCE_MULTI_MIC_MANAGER_VERSION="08020"
-        SOURCE_SSRM_CONFIG_NAME="siop_pa3q_sm8750"
+        SOURCE_SSRM_CONFIG_NAME="siop_e2s_s5e9945"
         SOURCE_SUPPORT_CUTOUT_PROTECTION=false
         ;;
     *)

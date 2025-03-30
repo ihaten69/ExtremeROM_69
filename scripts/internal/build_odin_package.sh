@@ -99,7 +99,7 @@ GENERATE_LPMAKE_OPT()
     echo "$OPT"
 }
 
-FILE_NAME="UN1CA_${ROM_VERSION}_$(date +%Y%m%d)_${TARGET_CODENAME}"
+FILE_NAME="UN1CA_${ROM_CODENAME}_${ROM_VERSION}_$(date +%Y%m%d)_${TARGET_CODENAME}"
 # ]
 
 echo "Set up tmp dir"
@@ -118,14 +118,16 @@ while read -r i; do
     mv "$WORK_DIR/$PARTITION.img" "$TMP_DIR/$PARTITION.img"
 done <<< "$(find "$WORK_DIR" -mindepth 1 -maxdepth 1 -type d)"
 
-echo "Building super.img"
-[ -f "$TMP_DIR/super.img" ] && rm -f "$TMP_DIR/super.img"
-CMD="lpmake $(GENERATE_LPMAKE_OPT)"
-$CMD &> /dev/null
-for i in "$TMP_DIR"/*; do
-    [[ "$i" == *"super.img" ]] && continue
-    rm -f "$i"
-done
+if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
+    echo "Building super.img"
+    [ -f "$TMP_DIR/super.img" ] && rm -f "$TMP_DIR/super.img"
+    CMD="lpmake $(GENERATE_LPMAKE_OPT)"
+    $CMD &> /dev/null
+    for i in "$TMP_DIR"/*; do
+        [[ "$i" == *"super.img" ]] && continue
+        rm -f "$i"
+    done
+fi
 
 while read -r i; do
     IMG="$(basename "$i")"

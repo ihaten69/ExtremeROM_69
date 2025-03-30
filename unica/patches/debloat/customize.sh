@@ -1,4 +1,5 @@
 [ -f "$SRC_DIR/unica/debloat.sh" ] && source "$SRC_DIR/unica/debloat.sh"
+[ -f "$SRC_DIR/platform/$TARGET_PLATFORM/debloat.sh" ] && source "$SRC_DIR/platform/$TARGET_PLATFORM/debloat.sh"
 [ -f "$SRC_DIR/target/$TARGET_CODENAME/debloat.sh" ] && source "$SRC_DIR/target/$TARGET_CODENAME/debloat.sh"
 
 for f in $ODM_DEBLOAT; do
@@ -15,4 +16,10 @@ for f in $SYSTEM_EXT_DEBLOAT; do
 done
 for f in $VENDOR_DEBLOAT; do
     DELETE_FROM_WORK_DIR "vendor" "$f"
+done
+for f in $PRISM_DEBLOAT; do
+    DELETE_FROM_WORK_DIR "prism" "$f"
+done
+for f in $OPTICS_DEBLOAT; do
+    DELETE_FROM_WORK_DIR "optics" "$f"
 done

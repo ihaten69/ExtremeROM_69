@@ -88,6 +88,16 @@ EXTRACT_OS_PARTITIONS()
                 { lpunpack "super.img" > /dev/null; } 2>&1
                 lpdump "super.img" > "lpdump" && rm "super.img"
             fi
+            if [ ! -f "prism.img" ]; then
+                local CSC_PARTITIONS="prism optics"
+                for partition in $CSC_PARTITIONS
+                do
+                    echo "Extracting $partition.img from TAR"
+                    tar xf "$CSC_TAR" "$partition.img.lz4"
+                    lz4 -d -q --rm "$partition.img.lz4" "$partition.img.sparse"
+                    simg2img "$partition.img.sparse" "$partition.img" && rm "$partition.img.sparse"
+                done
+            fi
         else
             local NON_DYNAMIC_PARTITIONS="product system vendor"
             for partition in $NON_DYNAMIC_PARTITIONS

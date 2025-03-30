@@ -262,6 +262,8 @@ GENERATE_UPDATER_SCRIPT()
     local HAS_VENDOR_DLKM=false
     local HAS_ODM_DLKM=false
     local HAS_SYSTEM_DLKM=false
+    local HAS_PRISM=false
+    local HAS_OPTICS=false
     local HAS_POST_INSTALL=false
 
     [ -f "$TMP_DIR/boot.img" ] && HAS_BOOT=true
@@ -277,6 +279,8 @@ GENERATE_UPDATER_SCRIPT()
     [ -f "$TMP_DIR/vendor_dlkm.new.dat.br" ] && HAS_VENDOR_DLKM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
     [ -f "$TMP_DIR/odm_dlkm.new.dat.br" ] && HAS_ODM_DLKM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
     [ -f "$TMP_DIR/system_dlkm.new.dat.br" ] && HAS_SYSTEM_DLKM=true && PARTITION_COUNT=$((PARTITION_COUNT + 1))
+    [ -f "$TMP_DIR/prism.new.dat.br" ] && HAS_PRISM=true
+    [ -f "$TMP_DIR/optics.new.dat.br" ] && HAS_OPTICS=true
     [ -f "$SRC_DIR/target/$TARGET_CODENAME/postinstall.edify" ] && HAS_POST_INSTALL=true
 
     [ -f "$SCRIPT_FILE" ] && rm -f "$SCRIPT_FILE"
@@ -433,6 +437,28 @@ GENERATE_UPDATER_SCRIPT()
             fi
             echo -n    'package_extract_file("system_dlkm.transfer.list"), "system_dlkm.new.dat.br", "system_dlkm.patch.dat") ||'
             echo    '  abort("E2001: Failed to update system_dlkm image.");'
+        fi
+        if $HAS_PRISM; then
+            echo -e "\n# Patch partition prism\n"
+            echo    'ui_print("Patching prism image unconditionally...");'
+            echo    'show_progress(0.100000, 0);'
+            echo -n    'block_image_update('
+            echo -n    '"'
+            echo -n    "$TARGET_BOOT_DEVICE_PATH"
+            echo -n    '/prism", '
+            echo -n    'package_extract_file("prism.transfer.list"), "prism.new.dat.br", "prism.patch.dat") ||'
+            echo    '  abort("E2001: Failed to update prism image.");'
+        fi
+        if $HAS_OPTICS; then
+            echo -e "\n# Patch partition optics\n"
+            echo    'ui_print("Patching optics image unconditionally...");'
+            echo    'show_progress(0.100000, 0);'
+            echo -n    'block_image_update('
+            echo -n    '"'
+            echo -n    "$TARGET_BOOT_DEVICE_PATH"
+            echo -n    '/optics", '
+            echo -n    'package_extract_file("optics.transfer.list"), "optics.new.dat.br", "optics.patch.dat") ||'
+            echo    '  abort("E2001: Failed to update optics image.");'
         fi
         if [ "$TARGET_SUPER_PARTITION_SIZE" -ne 0 ]; then
             echo -e "\n# --- End patching dynamic partitions ---\n"

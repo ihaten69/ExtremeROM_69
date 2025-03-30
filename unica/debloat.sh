@@ -148,6 +148,14 @@ system/etc/permissions/privapp-permissions-com.samsung.mediasearch.xml
 system/priv-app/MediaSearch
 "
 
+PRISM_DEBLOAT+="
+app
+media
+preload
+priv-app
+sipdb/Xt9
+"
+
 # eSIM
 if $SOURCE_IS_ESIM_SUPPORTED; then
     if ! $TARGET_IS_ESIM_SUPPORTED; then

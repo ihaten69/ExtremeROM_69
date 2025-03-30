@@ -15,11 +15,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# Device configuration file for Galaxy S10+ (Exynos) (beyond2lte)
-TARGET_NAME="Galaxy S10+ (Exynos)"
-TARGET_CODENAME="beyond2lte"
+# Device configuration file for Galaxy S10 5G (Exynos) (beyondx)
+TARGET_NAME="Galaxy S10 5G (Exynos)"
+TARGET_CODENAME="beyondx"
 TARGET_PLATFORM="exynos9820"
-TARGET_FIRMWARE="SM-G975F/DBT/356262101234561"
+TARGET_FIRMWARE="SM-G977B/DBT/355007101234561"
 TARGET_EXTRA_FIRMWARES=("")
 TARGET_API_LEVEL=31
 TARGET_PRODUCT_FIRST_API_LEVEL=28

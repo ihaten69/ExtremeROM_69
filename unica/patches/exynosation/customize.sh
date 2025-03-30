@@ -165,6 +165,11 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     system/lib64/libSurfaceFlingerProp.so
     system/lib64/libandroid_runtime.so
     system/lib64/libandroid_runtime_lazy.so
+    system/lib64/libaudiopolicy.so
+    system/lib64/libaudiopolicycomponents.so
+    system/lib64/libaudiopolicyengineconfigurable.so
+    system/lib64/libaudiopolicyenginedefault.so
+    system/lib64/libaudiopolicymanagerdefault.so
     system/lib64/libeden_nn_on_system.so
     system/lib64/libeden_rt_stub.edensdk.samsung.so
     system/lib64/libgui.so

@@ -52,6 +52,11 @@
 /system/lib64/android\.hardware\.graphics\.extension\.composer3-V1-ndk\.so u:object_r:system_lib_file:s0
 /system/lib64/libandroid_runtime\.so u:object_r:system_lib_file:s0
 /system/lib64/libandroid_runtime_lazy\.so u:object_r:system_lib_file:s0
+/system/lib64/libaudiopolicy\.so u:object_r:system_lib_file:s0
+/system/lib64/libaudiopolicycomponents\.so u:object_r:system_lib_file:s0
+/system/lib64/libaudiopolicyengineconfigurable\.so u:object_r:system_lib_file:s0
+/system/lib64/libaudiopolicyenginedefault\.so u:object_r:system_lib_file:s0
+/system/lib64/libaudiopolicymanagerdefault\.so u:object_r:system_lib_file:s0
 /system/lib64/libc\+\+_shared\.so u:object_r:system_lib_file:s0
 /system/lib64/libeden_nn_on_system\.so u:object_r:system_lib_file:s0
 /system/lib64/libeden_rt_stub\.edensdk\.samsung\.so u:object_r:system_lib_file:s0

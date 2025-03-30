@@ -17,3 +17,6 @@ echo "Setting /data to F2FS"
 FROM="noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic"
 TO="noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678"
 sed -i -e "${LINE}s/ext4/f2fs/g" -e "${LINE}s/$FROM/$TO/g" "$WORK_DIR/vendor/etc/fstab.exynos9820"
+
+echo "Disabling A2DP Offload"
+SET_PROP "system" persist.bluetooth.a2dp_offload.disabled "true"

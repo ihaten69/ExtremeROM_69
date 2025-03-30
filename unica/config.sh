@@ -16,9 +16,9 @@
 #
 
 # UN1CA configuration file
-ROM_VERSION="2.5.5"
+ROM_VERSION="0.5.0"
 ROM_VERSION+="-$(git rev-parse --short HEAD)"
-ROM_CODENAME="Eureka"
+ROM_CODENAME="Nexus"
 
 # Source ROM firmware
 case "$TARGET_SINGLE_SYSTEM_IMAGE" in
@@ -28,7 +28,7 @@ case "$TARGET_SINGLE_SYSTEM_IMAGE" in
         SOURCE_EXTRA_FIRMWARES=()
         SOURCE_API_LEVEL=35
         SOURCE_PRODUCT_FIRST_API_LEVEL=35
-        SOURCE_VNDK_VERSION=none
+        SOURCE_VNDK_VERSION="none"
         SOURCE_HAS_SYSTEM_EXT=true
         SOURCE_SUPER_GROUP_NAME="qti_dynamic_partitions"
         # SEC Product Feature

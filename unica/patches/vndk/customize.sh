@@ -1,5 +1,3 @@
-local NO_APEX=false
-
 if [[ "$SOURCE_VNDK_VERSION" != "$TARGET_VNDK_VERSION" ]]; then
     if $TARGET_HAS_SYSTEM_EXT; then
         SYS_EXT_DIR="$WORK_DIR/system_ext"
@@ -7,10 +5,11 @@ if [[ "$SOURCE_VNDK_VERSION" != "$TARGET_VNDK_VERSION" ]]; then
         SYS_EXT_DIR="$WORK_DIR/system/system/system_ext"
     fi
 
-    [ ! -d "$SYS_EXT_DIR/apex" ] && NO_APEX=true
+    NO_APEX=false
+    [[ $SOURCE_VNDK_VERSION == "none" ]] && NO_APEX=true
 
     if [ ! -f "$SYS_EXT_DIR/apex/com.android.vndk.v$TARGET_VNDK_VERSION.apex" ]; then
-        if [[ -f "$SYS_EXT_DIR/apex/com.android.vndk.v$SOURCE_VNDK_VERSION.apex" ]]; then
+        if ! $NO_APEX; then
             DELETE_FROM_WORK_DIR "system_ext" "apex/com.android.vndk.v$SOURCE_VNDK_VERSION.apex"
         fi
 

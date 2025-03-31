@@ -203,6 +203,19 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     "
     for blob in $BLOBS_LIST
     do
+        ADD_TO_WORK_DIR "e2sxxx" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
+    done
+
+    # Now add Exynos libs, sigh...
+    BLOBS_LIST="
+    system/app
+    system/bin
+    system/etc
+    system/framework
+    system/priv-app
+    "
+    for blob in $BLOBS_LIST
+    do
         ADD_TO_WORK_DIR "e2sxxx" "system" "$blob" 0 0 644 "u:object_r:system_file:s0"
     done
 

@@ -1,7 +1,7 @@
 if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_SINGLE_SYSTEM_IMAGE == "essi" ]]; then
     echo "Target device with 32-Bit HALs detected! Patching..."
 
-    ADD_TO_WORK_DIR "dm3qxxx" "system" "system/lib" 0 0 644 "u:object_r:system_file:s0"
+    ADD_TO_WORK_DIR "dm3qxxx" "system" "system/lib" 0 0 644 "u:object_r:system_lib_file:s0"
 
     BLOBS_LIST="
     system/apex/com.android.i18n.apex
@@ -17,9 +17,18 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
         ADD_TO_WORK_DIR "dm3qxxx" "system" "$blob" 0 0 644 "u:object_r:system_file:s0"
     done
 
+    BLOBS_LIST="
+    system/bin/linker
+    system/bin/bootstrap/linker
+    "
+    for blob in $BLOBS_LIST
+    do
+        ADD_TO_WORK_DIR "dm3qxxx" "system" "$blob" 0 0 644 "u:object_r:system_linker_exec:s0"
+    done
+
     # Downgrade ENGMODE for 32bit HAL version
-    ADD_TO_WORK_DIR "dm3qxxx" "system" "lib64/lib.engmode.samsung.so" 0 0 644 "u:object_r:system_file:s0"
-    ADD_TO_WORK_DIR "dm3qxxx" "system" "lib64/lib.engmodejni.samsung.so" 0 0 644 "u:object_r:system_file:s0"
+    ADD_TO_WORK_DIR "dm3qxxx" "system" "lib64/lib.engmode.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
+    ADD_TO_WORK_DIR "dm3qxxx" "system" "lib64/lib.engmodejni.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
 
     # Set props
     echo "Setting props..."

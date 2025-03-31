@@ -4,8 +4,9 @@ if [ "$TARGET_ESE_CHIP_VENDOR" = "SLSI" ]; then
     DELETE_FROM_WORK_DIR "system" "system/lib64/libnfc_nxpsn_jni.so"
     DELETE_FROM_WORK_DIR "system" "system/priv-app/NfcNci/lib/arm64/libnfc_nxpsn_jni.so"
 
+    ADD_TO_WORK_DIR "e2sxxx" "system" "system/etc/libnfc-nci.conf" 0 0 644 "u:object_r:system_file:s0"
+
     BLOBS_LIST="
-    system/etc/libnfc-nci.conf
     system/lib64/libnfc_sec_jni.so
     system/lib64/libnfc-nci_flags.so
     system/lib64/libnfc-sec.so
@@ -14,7 +15,7 @@ if [ "$TARGET_ESE_CHIP_VENDOR" = "SLSI" ]; then
     "
     for blob in $BLOBS_LIST
     do
-        ADD_TO_WORK_DIR "e2sxxx" "system" "$blob" 0 0 644 "u:object_r:system_file:s0"
+        ADD_TO_WORK_DIR "e2sxxx" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
     done
 else
     echo "NXP NFC found. Ignoring."

@@ -181,6 +181,7 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     system/lib64/libremotedisplay_wfd.so
     system/lib64/libremotedisplayservice.so
     system/lib64/librepeater.so
+    system/lib64/libsamsung_keystore_utils.so
     system/lib64/libsecuibc.so
     system/lib64/libstagefright_hdcp.so
     system/lib64/libteecl_aidl.so

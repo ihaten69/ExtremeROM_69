@@ -77,6 +77,7 @@
 /system/lib64/libtui_service_jni\.so u:object_r:system_lib_file:s0
 /system/lib64/libtsmux\.so u:object_r:system_lib_file:s0
 /system/lib64/librepeater\.so u:object_r:system_lib_file:s0
+/system/lib64/libsamsung_keystore_utils\.so u:object_r:system_lib_file:s0
 /system/lib64/libsecuibc\.so u:object_r:system_lib_file:s0
 /system/lib64/libstagefright_hdcp\.so u:object_r:system_lib_file:s0
 /system/lib64/libSurfaceFlingerProp\.so u:object_r:system_lib_file:s0

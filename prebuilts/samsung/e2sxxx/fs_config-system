@@ -82,6 +82,7 @@ system/lib64/libtensorflowLite2_11_0_dynamic_camera.so 0 0 644 capabilities=0x0
 system/lib64/libtui_service_jni.so 0 0 644 capabilities=0x0
 system/lib64/libtsmux.so 0 0 644 capabilities=0x0
 system/lib64/librepeater.so 0 0 644 capabilities=0x0
+system/lib64/libsamsung_keystore_utils.so 0 0 644 capabilities=0x0
 system/lib64/libsaiv_HprFace_cmh_support_jni.camera.samsung.so 0 0 644 capabilities=0x0
 system/lib64/libsecuibc.so 0 0 644 capabilities=0x0
 system/lib64/libstagefright_hdcp.so 0 0 644 capabilities=0x0

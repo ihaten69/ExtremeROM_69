@@ -63,20 +63,20 @@ if [ -d "$MODULE/system_ext" ]; then
 fi
 
 case "$1" in
+    "prebuilts/samsung/pa3qzcx")
+        FIRMWARE="SM-S9380/CHC/355534491000674"
+        ;;
     "prebuilts/samsung/e2sxxx")
         FIRMWARE="SM-S926B/EUX/352737401234563"
         ;;
-    "prebuilts/samsung/pa3qzcx")
-        FIRMWARE="SM-S9380/CHC/355534491000674"
+    "prebuilts/samsung/r0qxxx")
+        FIRMWARE="SM-S901E/INS/350999641234561"
         ;;
     "prebuilts/samsung/p3sxxx")
         FIRMWARE="SM-G998B/AUT/350299942063409"
         ;;
     "prebuilts/samsung/q4qxxx")
         FIRMWARE="SM-F936B/INS/352334701234566"
-        ;;
-    "prebuilts/samsung/r0qxxx")
-        FIRMWARE="SM-S901E/INS/350999641234561"
         ;;
     "prebuilts/samsung/a73xqxx")
         FIRMWARE="SM-A736B/XME/352828291234563"

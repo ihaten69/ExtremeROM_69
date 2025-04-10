@@ -125,7 +125,6 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     # Now add Exynos libs, sigh...
     BLOBS_LIST="
     system/app/TEEgrisTuiService/TEEgrisTuiService.apk
-    system/app/TEEgrisTuiService/lib/arm64/libtui_service_jni.so
     system/app/TEEgrisTuiService/oat/arm64/TEEgrisTuiService.odex
     system/app/TEEgrisTuiService/oat/arm64/TEEgrisTuiService.vdex
     system/bin/audioserver

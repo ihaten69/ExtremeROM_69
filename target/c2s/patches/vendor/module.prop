@@ -1,4 +1,4 @@
-id=uwb_target
-name=Remove UWB
+id=vendor
+name=Vendor patches
 author=ExtremeXT
 description=Removes UWB from c2s vendor

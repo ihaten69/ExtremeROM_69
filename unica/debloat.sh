@@ -122,6 +122,7 @@ system/priv-app/DiagMonAgent94
 system/priv-app/DigitalKey
 system/priv-app/FBInstaller_NS
 system/priv-app/FBServices
+system/priv-app/PhotoRemasterService
 system/priv-app/FotaAgent
 system/priv-app/OneDrive_Samsung_v3
 system/priv-app/OMCAgent5

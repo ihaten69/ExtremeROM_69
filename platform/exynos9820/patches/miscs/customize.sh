@@ -27,5 +27,11 @@ sed -i -e "${LINE}s/ext4/f2fs/g" -e "${LINE}s/$FROM/$TO/g" "$WORK_DIR/vendor/etc
 echo "Disabling A2DP Offload"
 SET_PROP "system" persist.bluetooth.a2dp_offload.disabled "true"
 
+echo "Setting SF flags"
+SET_PROP "vendor" "debug.sf.latch_unsignaled" "1"
+SET_PROP "vendor" "debug.sf.high_fps_late_app_phase_offset_ns" "0"
+SET_PROP "vendor" "debug.sf.high_fps_late_sf_phase_offset_ns" "0"
+
 # B6Q Light HAL
+echo "Updating Light HAL"
 ADD_TO_WORK_DIR "b6qxxx" "vendor" "."

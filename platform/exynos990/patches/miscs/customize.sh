@@ -10,6 +10,11 @@ SET_PROP "vendor" "external_storage.casefold.enabled" "1"
 SET_PROP "vendor" "external_storage.sdcardfs.enabled" "0"
 SET_PROP "vendor" "persist.sys.fuse.passthrough.enable" "true"
 
+echo "Setting SF flags"
+SET_PROP "vendor" "debug.sf.latch_unsignaled" "1"
+SET_PROP "vendor" "debug.sf.high_fps_late_app_phase_offset_ns" "0"
+SET_PROP "vendor" "debug.sf.high_fps_late_sf_phase_offset_ns" "0"
+
 echo "Disabling encryption"
 # Encryption
 LINE=$(sed -n "/^\/dev\/block\/by-name\/userdata/=" "$WORK_DIR/vendor/etc/fstab.exynos990")

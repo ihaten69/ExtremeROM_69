@@ -18,6 +18,7 @@
 # Device configuration file for Galaxy Note 20 Ultra (Exynos) (c2s)
 TARGET_NAME="Galaxy Note 20 Ultra (Exynos)"
 TARGET_CODENAME="c2s"
+TARGET_ASSERT_MODEL=("SM-N985F" "SM-N986B")
 TARGET_PLATFORM="exynos990"
 TARGET_FIRMWARE="SM-N986B/AUT/355375441018188"
 TARGET_EXTRA_FIRMWARES=("")

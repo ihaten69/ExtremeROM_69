@@ -18,6 +18,7 @@
 # Device configuration file for Galaxy S10e (Exynos) (beyond0lte)
 TARGET_NAME="Galaxy S10e (Exynos)"
 TARGET_CODENAME="beyond0lte"
+TARGET_ASSERT_MODEL=("SM-G970F" "SM-G970N")
 TARGET_PLATFORM="exynos9820"
 TARGET_FIRMWARE="SM-G970F/AUT/351585114819407"
 TARGET_EXTRA_FIRMWARES=("")

@@ -11,6 +11,15 @@ system/lib64/libae_bracket_hdr.arcsoft.so
 system/lib64/libface_recognition.arcsoft.so
 system/lib64/libmf_bayer_enhance.arcsoft.so
 system/lib64/libDualCamBokehCapture.camera.samsung.so
+system/lib64/libai_fusion_high_resolution.arcsoft.so
+system/lib64/libai_fusion_high_resolution_base_v1.arcsoft.so
+system/lib64/libai_fusion_high_resolution_base_v2.arcsoft.so
+system/lib64/libBayerAIPhoto.camera.samsung.so
+system/lib64/libbayeraiphoto_wrapper_v1.camera.samsung.so
+system/lib64/libBayerAIPhotoTuning.camera.samsung.so
+system/lib64/libFusionAIPhoto.camera.samsung.so
+system/lib64/libFusionAIPhoto_wrapper.camera.samsung.so
+system/lib64/libFusionAIPhotoTuning.camera.samsung.so
 "
 for blob in $BLOBS_LIST
 do

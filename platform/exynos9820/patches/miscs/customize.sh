@@ -1,11 +1,7 @@
 echo "Disabling A/B"
 SET_PROP "product" "ro.product.ab_ota_partitions" --delete
 
-echo "Fix MIDAS model detection"
-sed -i "s/ro.product.device/ro.product.vendor.device/g" "$WORK_DIR/vendor/etc/midas/midas_config.json"
-
 echo "Disabling encryption"
-
 # Encryption
 LINE=$(sed -n "/^\/dev\/block\/by-name\/userdata/=" "$WORK_DIR/vendor/etc/fstab.exynos9820")
 sed -i "${LINE}s/,fileencryption=ice//g" "$WORK_DIR/vendor/etc/fstab.exynos9820"

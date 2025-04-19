@@ -1,6 +1,6 @@
 system 0 0 755 capabilities=0x0
-system/bin 0 2000 0751
-system/bin/remotedisplay 0 2000 0755
+system/bin 0 2000 0751 capabilities=0x0
+system/bin/remotedisplay 0 2000 0755 capabilities=0x0
 system/lib 0 0 755 capabilities=0x0
 system/lib/android.hardware.graphics.common-V4-ndk.so 0 0 644 capabilities=0x0
 system/lib/android.hardware.graphics.composer3-V1-ndk.so 0 0 644 capabilities=0x0
@@ -25,3 +25,6 @@ system/lib64/libsuperresolution_raw.arcsoft.so 0 0 644 capabilities=0x0
 system/lib64/libsuperresolution_wrapper_v2.camera.samsung.so 0 0 644 capabilities=0x0
 system/lib64/libsuperresolutionraw_wrapper_v2.camera.samsung.so 0 0 644 capabilities=0x0
 system/lib64/vendor.samsung.hardware.snap-V2-ndk.so 0 0 644 capabilities=0x0
+system/priv-app 0 0 755 capabilities=0x0
+system/priv-app/PhotoRemasterService 0 0 755 capabilities=0x0
+system/priv-app/PhotoRemasterService/PhotoRemasterService.apk 0 0 644 capabilities=0x0

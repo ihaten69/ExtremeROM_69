@@ -21,4 +21,6 @@ ADD_TO_WORK_DIR "p3sxxx" "vendor" "."
 # S21 Light HAL
 if [[ "$TARGET_CODENAME" != "r8s" ]]; then
     ADD_TO_WORK_DIR "p3sxxx" "vendor" "."
+elif [[ "$TARGET_CODENAME" == "r8s" ]]; then
+    ADD_TO_WORK_DIR "a73xqxx" "vendor" "."
 fi

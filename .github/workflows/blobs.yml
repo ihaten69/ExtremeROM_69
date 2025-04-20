@@ -13,12 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - module: "Galaxy S24+ (e2sxxx)"
-            path: "prebuilts/samsung/e2sxxx"
           - module: "Galaxy S22 (r0qxxx)"
             path: "prebuilts/samsung/r0qxxx"
-          - module: "Galaxy S21 Ultra (p3sxxx)"
-            path: "prebuilts/samsung/p3sxxx"
           - module: "Galaxy Fold 4 (q4qxxx)"
             path: "prebuilts/samsung/q4qxxx"
           - module: "Galaxy A73 5G (a73xqxx)"

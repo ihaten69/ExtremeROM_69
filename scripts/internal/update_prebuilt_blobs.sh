@@ -63,9 +63,6 @@ if [ -d "$MODULE/system_ext" ]; then
 fi
 
 case "$1" in
-    "prebuilts/samsung/e2sxxx")
-        FIRMWARE="SM-S926B/EUX/352737401234563"
-        ;;
     "prebuilts/samsung/r0qxxx")
         FIRMWARE="SM-S901E/INS/350999641234561"
         ;;

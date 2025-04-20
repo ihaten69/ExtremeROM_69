@@ -75,6 +75,7 @@ system/app/StickerCenter
 system/app/Fast
 system/app/Rampart
 system/app/KidsHome_Installer
+system/app/SamsungTTS
 system/app/SamsungTTSVoice_ar_AE_m00_ICLM
 system/app/SamsungTTSVoice_de_DE_f00
 system/app/SamsungTTSVoice_en_GB_f00

@@ -187,6 +187,19 @@ if [[ "$TARGET_DISPLAY_CUTOUT_TYPE" == "right" ]]; then
     APPLY_PATCH "system_ext/priv-app/SystemUI/SystemUI.apk" "cutout/SystemUI.apk/0001-Add-right-cutout-support.patch"
 fi
 
+if [[ "$SOURCE_DVFS_CONFIG_NAME" != "$TARGET_DVFS_CONFIG_NAME" ]]; then
+    echo "Applying DVFS patches"
+
+    DECODE_APK "system/framework/ssrm.jar"
+
+    FTP="
+    system/framework/ssrm.jar/smali/com/android/server/ssrm/Feature.smali
+    "
+    for f in $FTP; do
+        sed -i "s/$SOURCE_DVFS_CONFIG_NAME/$TARGET_DVFS_CONFIG_NAME/g" "$APKTOOL_DIR/$f"
+    done
+fi
+
 if $SOURCE_IS_ESIM_SUPPORTED; then
     if ! $TARGET_IS_ESIM_SUPPORTED; then
         SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_COMMON_CONFIG_EMBEDDED_SIM_SLOTSWITCH" --delete

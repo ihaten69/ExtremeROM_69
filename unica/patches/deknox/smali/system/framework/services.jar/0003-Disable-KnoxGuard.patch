@@ -1,7 +1,7 @@
 From 3ec5ffb63074be6252f4364f54959b20a5b2095d Mon Sep 17 00:00:00 2001
 From: Ocin4ever <85343782+Ocin4ever@users.noreply.github.com>
 Date: Sat, 8 Mar 2025 16:47:53 +0100
-Subject: [PATCH] Disable-KnoxGuard
+Subject: [PATCH] Disable KnoxGuard
 
 Co-Authored-By: Salvo Giangreco <giangrecosalvo9@gmail.com>
 ---

@@ -35,8 +35,7 @@ case "$TARGET_SINGLE_SYSTEM_IMAGE" in
         # SEC Product Feature
         SOURCE_AUTO_BRIGHTNESS_TYPE="5"
         SOURCE_DVFS_CONFIG_NAME="dvfs_policy_default"
-        SOURCE_ESE_CHIP_VENDOR="NXP"
-        SOURCE_ESE_COS_NAME="JCOP7.0U"
+        SOURCE_NFC_CHIP_VENDOR="NXP"
         SOURCE_FP_SENSOR_CONFIG="google_touch_display_ultrasonic,wireless_charging_notifier"
         SOURCE_HAS_MASS_CAMERA_APP=false
         SOURCE_HAS_QHD_DISPLAY=true

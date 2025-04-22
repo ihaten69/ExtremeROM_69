@@ -93,7 +93,7 @@ if [[ "$(GET_FP_SENSOR_TYPE "$SOURCE_FP_SENSOR_CONFIG")" != "$(GET_FP_SENSOR_TYP
     if [[ "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" == "optical" ]]; then
         ADD_TO_WORK_DIR "r11sxxx" "system" "."
     elif [[ "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" == "side" ]]; then
-        ADD_TO_WORK_DIR "a26xxx" "system" "."
+        ADD_TO_WORK_DIR "b6qxxx" "system" "."
         DELETE_FROM_WORK_DIR "system" "system/priv-app/BiometricSetting/oat"
     fi
 fi

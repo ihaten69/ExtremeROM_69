@@ -1,35 +1,17 @@
-From 71fc0901b2399c213fffee49cbd2efb44782a4b6 Mon Sep 17 00:00:00 2001
+From 58e389039efcfda278c38fcac79c61816b13f47e Mon Sep 17 00:00:00 2001
 From: ocin4ever <85343782+Ocin4ever@users.noreply.github.com>
-Date: Tue, 22 Apr 2025 19:38:16 +0200
+Date: Thu, 24 Apr 2025 00:05:05 +0200
 Subject: [PATCH] Introduce SamsungPropsHooks
 
 Co-Authored-By: Salvo Giangreco <giangrecosalvo9@gmail.com>
 ---
- .../app/ApplicationPackageManager.smali       |   6 +
  .../smali/android/app/Instrumentation.smali   |   4 +
  .../android/os/SystemProperties.smali         |  14 +
  .../android/provider/Settings$Global.smali    |   9 +
- .../ocin4ever/spoof/SamsungPropsHooks.smali   | 779 ++++++++++++++++++
- 5 files changed, 812 insertions(+)
+ .../ocin4ever/spoof/SamsungPropsHooks.smali   | 550 ++++++++++++++++++
+ 4 files changed, 577 insertions(+)
  create mode 100644 smali_classes6/com/ocin4ever/spoof/SamsungPropsHooks.smali
 
-diff --git a/smali/android/app/ApplicationPackageManager.smali b/smali/android/app/ApplicationPackageManager.smali
-index 347f3fac76..b6901f9ac7 100644
---- a/smali/android/app/ApplicationPackageManager.smali
-+++ b/smali/android/app/ApplicationPackageManager.smali
-@@ -10757,6 +10757,12 @@
- .method public whitelist hasSystemFeature(Ljava/lang/String;I)Z
-     .locals 2
- 
-+    invoke-static {p1}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->onAPMHasSystemFeatureHook(Ljava/lang/String;)Ljava/lang/Boolean;
-+
-+    move-result-object v0
-+
-+    if-nez v0, :cond_0
-+
-     invoke-static {p1}, Lcom/samsung/android/core/pm/mm/MaintenanceModeUtils;->isMaintenanceModeFeature(Ljava/lang/String;)Z
- 
-     move-result v0
 diff --git a/smali/android/app/Instrumentation.smali b/smali/android/app/Instrumentation.smali
 index 6c24fd2eec..1c49563600 100644
 --- a/smali/android/app/Instrumentation.smali
@@ -114,10 +96,10 @@ index c4aaccbb3c..65c8e93684 100644
      invoke-virtual {v0, p0, p1, p2}, Landroid/provider/Settings$NameValueCache;->getStringForUser(Landroid/content/ContentResolver;Ljava/lang/String;I)Ljava/lang/String;
 diff --git a/smali_classes6/com/ocin4ever/spoof/SamsungPropsHooks.smali b/smali_classes6/com/ocin4ever/spoof/SamsungPropsHooks.smali
 new file mode 100644
-index 0000000000..3d4fdef3cf
+index 0000000000..e76a418602
 --- /dev/null
 +++ b/smali_classes6/com/ocin4ever/spoof/SamsungPropsHooks.smali
-@@ -0,0 +1,779 @@
+@@ -0,0 +1,550 @@
 +.class public final Lcom/ocin4ever/spoof/SamsungPropsHooks;
 +.super Ljava/lang/Object;
 +.source "SamsungPropsHooks.java"
@@ -127,8 +109,6 @@ index 0000000000..3d4fdef3cf
 +.field private static final DEBUG:Z = false
 +
 +.field private static final PACKAGE_FIND_MY_MOBILE:Ljava/lang/String; = "com.samsung.android.fmm"
-+
-+.field private static final PACKAGE_GPHOTOS:Ljava/lang/String; = "com.google.android.apps.photos"
 +
 +.field private static final PACKAGE_NETFLIX:Ljava/lang/String; = "com.netflix.mediaclient"
 +
@@ -140,16 +120,6 @@ index 0000000000..3d4fdef3cf
 +
 +.field private static final PACKAGE_TVPLUS:Ljava/lang/String; = "com.samsung.android.tvplus"
 +
-+.field private static final PIXEL_XL_FEATURES:Ljava/util/Set;
-+    .annotation system Ldalvik/annotation/Signature;
-+        value = {
-+            "Ljava/util/Set<",
-+            "Ljava/lang/String;",
-+            ">;"
-+        }
-+    .end annotation
-+.end field
-+
 +.field private static final TAG:Ljava/lang/String; = "SamsungPropsHooks"
 +
 +.field private static volatile sIsUserApp:Z
@@ -160,66 +130,8 @@ index 0000000000..3d4fdef3cf
 +
 +.field private static volatile sSpoofKeystoreProp:Z
 +
-+.field private static volatile sSpoofPixelXL:Z
-+
 +
 +# direct methods
-+.method static constructor <clinit>()V
-+    .locals 4
-+
-+    new-instance v0, Ljava/util/HashSet;
-+
-+    const/4 v1, 0x6
-+
-+    new-array v1, v1, [Ljava/lang/String;
-+
-+    const/4 v2, 0x0
-+
-+    const-string v3, "com.google.android.apps.photos.NEXUS_PRELOAD"
-+
-+    aput-object v3, v1, v2
-+
-+    const/4 v2, 0x1
-+
-+    const-string v3, "com.google.android.apps.photos.nexus_preload"
-+
-+    aput-object v3, v1, v2
-+
-+    const/4 v2, 0x2
-+
-+    const-string v3, "com.google.android.apps.photos.PIXEL_PRELOAD"
-+
-+    aput-object v3, v1, v2
-+
-+    const/4 v2, 0x3
-+
-+    const-string v3, "com.google.android.feature.GOOGLE_BUILD"
-+
-+    aput-object v3, v1, v2
-+
-+    const/4 v2, 0x4
-+
-+    const-string v3, "com.google.android.feature.GOOGLE_EXPERIENCE"
-+
-+    aput-object v3, v1, v2
-+
-+    const/4 v2, 0x5
-+
-+    const-string v3, "com.google.android.feature.PIXEL_EXPERIENCE"
-+
-+    aput-object v3, v1, v2
-+
-+    invoke-static {v1}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-+
-+    move-result-object v1
-+
-+    invoke-direct {v0, v1}, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
-+
-+    sput-object v0, Lcom/ocin4ever/spoof/SamsungPropsHooks;->PIXEL_XL_FEATURES:Ljava/util/Set;
-+
-+    return-void
-+.end method
-+
 +.method private constructor <init>()V
 +    .locals 0
 +
@@ -247,7 +159,7 @@ index 0000000000..3d4fdef3cf
 +
 +    if-eqz v1, :cond_0
 +
-+    goto/16 :goto_6
++    goto/16 :goto_3
 +
 +    :cond_0
 +    sput-object v0, Lcom/ocin4ever/spoof/SamsungPropsHooks;->sPackageName:Ljava/lang/String;
@@ -360,120 +272,48 @@ index 0000000000..3d4fdef3cf
 +    goto :goto_2
 +
 +    :cond_2
-+    move p0, v1
-+
-+    goto :goto_3
++    move v0, v1
 +
 +    :cond_3
 +    :goto_2
-+    move p0, v0
-+
-+    :goto_3
-+    sput-boolean p0, Lcom/ocin4ever/spoof/SamsungPropsHooks;->sSpoofKeystoreProp:Z
++    sput-boolean v0, Lcom/ocin4ever/spoof/SamsungPropsHooks;->sSpoofKeystoreProp:Z
 +
 +    sget-object p0, Lcom/ocin4ever/spoof/SamsungPropsHooks;->sPackageName:Ljava/lang/String;
 +
 +    invoke-virtual {p0}, Ljava/lang/String;->hashCode()I
 +
-+    invoke-virtual {p0}, Ljava/lang/String;->hashCode()I
++    const-string v0, "com.samsung.android.smartmirroring"
 +
-+    move-result v2
++    invoke-virtual {p0, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 +
-+    const/4 v3, -0x1
++    move-result v0
 +
-+    sparse-switch v2, :sswitch_data_0
++    if-nez v0, :cond_5
 +
-+    :goto_4
-+    move v1, v3
++    const-string v0, "com.netflix.mediaclient"
 +
-+    goto :goto_5
-+
-+    :sswitch_0
-+    const-string v1, "com.google.android.apps.photos"
-+
-+    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
++    invoke-virtual {p0, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 +
 +    move-result p0
 +
 +    if-nez p0, :cond_4
 +
-+    goto :goto_4
++    goto :goto_3
 +
 +    :cond_4
-+    const/4 v1, 0x2
-+
-+    goto :goto_5
-+
-+    :sswitch_1
-+    const-string v1, "com.netflix.mediaclient"
-+
-+    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-+
-+    move-result p0
-+
-+    if-nez p0, :cond_5
-+
-+    goto :goto_4
-+
-+    :cond_5
-+    move v1, v0
-+
-+    goto :goto_5
-+
-+    :sswitch_2
-+    const-string v2, "com.samsung.android.smartmirroring"
-+
-+    invoke-virtual {p0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-+
-+    move-result p0
-+
-+    if-nez p0, :cond_6
-+
-+    goto :goto_4
-+
-+    :cond_6
-+    :goto_5
-+    packed-switch v1, :pswitch_data_0
-+
-+    goto :goto_6
-+
-+    :pswitch_0
-+    sput-boolean v0, Lcom/ocin4ever/spoof/SamsungPropsHooks;->sSpoofPixelXL:Z
-+
-+    invoke-static {}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->spoofAsPixelXL()V
-+
-+    return-void
-+
-+    :pswitch_1
 +    invoke-static {}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->spoofAsPixel6Pro()V
 +
 +    return-void
 +
-+    :pswitch_2
++    :cond_5
 +    const-string p0, "TYPE"
 +
 +    const-string v0, "userdebug"
 +
 +    invoke-static {p0, v0}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->setBuildField(Ljava/lang/String;Ljava/lang/String;)V
 +
-+    :goto_6
++    :goto_3
 +    return-void
-+
-+    nop
-+
-+    :sswitch_data_0
-+    .sparse-switch
-+        -0x6963b406 -> :sswitch_2
-+        0x1dd9a466 -> :sswitch_1
-+        0x21e603d6 -> :sswitch_0
-+    .end sparse-switch
-+
-+    :pswitch_data_0
-+    .packed-switch 0x0
-+        :pswitch_2
-+        :pswitch_1
-+        :pswitch_0
-+    .end packed-switch
 +.end method
 +
 +.method private static isSamsungSystemApp(Ljava/lang/String;)Z
@@ -511,53 +351,6 @@ index 0000000000..3d4fdef3cf
 +    const/4 p0, 0x1
 +
 +    return p0
-+.end method
-+
-+.method public static onAPMHasSystemFeatureHook(Ljava/lang/String;)Ljava/lang/Boolean;
-+    .locals 2
-+
-+    sget-boolean v0, Lcom/ocin4ever/spoof/SamsungPropsHooks;->sSpoofPixelXL:Z
-+
-+    if-eqz v0, :cond_0
-+
-+    sget-object v0, Lcom/ocin4ever/spoof/SamsungPropsHooks;->PIXEL_XL_FEATURES:Ljava/util/Set;
-+
-+    invoke-interface {v0, p0}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
-+
-+    move-result v0
-+
-+    if-eqz v0, :cond_0
-+
-+    new-instance v0, Ljava/lang/StringBuilder;
-+
-+    const-string v1, "Spoofing \""
-+
-+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-+
-+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-+
-+    move-result-object p0
-+
-+    const-string v0, "\" feature to \"true\""
-+
-+    invoke-virtual {p0, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-+
-+    move-result-object p0
-+
-+    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-+
-+    move-result-object p0
-+
-+    invoke-static {p0}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->dlog(Ljava/lang/String;)V
-+
-+    sget-object p0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
-+
-+    return-object p0
-+
-+    :cond_0
-+    const/4 p0, 0x0
-+
-+    return-object p0
 +.end method
 +
 +.method public static onEDMGetAPILevelHook()I
@@ -852,46 +645,6 @@ index 0000000000..3d4fdef3cf
 +    const-string v0, "MODEL"
 +
 +    const-string v1, "Pixel 6 Pro"
-+
-+    invoke-static {v0, v1}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->setBuildField(Ljava/lang/String;Ljava/lang/String;)V
-+
-+    return-void
-+.end method
-+
-+.method private static spoofAsPixelXL()V
-+    .locals 2
-+
-+    const-string v0, "BRAND"
-+
-+    const-string v1, "google"
-+
-+    invoke-static {v0, v1}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->setBuildField(Ljava/lang/String;Ljava/lang/String;)V
-+
-+    const-string v0, "MANUFACTURER"
-+
-+    const-string v1, "Google"
-+
-+    invoke-static {v0, v1}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->setBuildField(Ljava/lang/String;Ljava/lang/String;)V
-+
-+    const-string v0, "DEVICE"
-+
-+    const-string v1, "marlin"
-+
-+    invoke-static {v0, v1}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->setBuildField(Ljava/lang/String;Ljava/lang/String;)V
-+
-+    const-string v0, "PRODUCT"
-+
-+    invoke-static {v0, v1}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->setBuildField(Ljava/lang/String;Ljava/lang/String;)V
-+
-+    const-string v0, "MODEL"
-+
-+    const-string v1, "Pixel XL"
-+
-+    invoke-static {v0, v1}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->setBuildField(Ljava/lang/String;Ljava/lang/String;)V
-+
-+    const-string v0, "FINGERPRINT"
-+
-+    const-string v1, "google/marlin/marlin:10/QP1A.191005.007.A3/5972272:user/release-keys"
 +
 +    invoke-static {v0, v1}, Lcom/ocin4ever/spoof/SamsungPropsHooks;->setBuildField(Ljava/lang/String;Ljava/lang/String;)V
 +

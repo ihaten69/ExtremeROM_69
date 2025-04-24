@@ -71,6 +71,7 @@ BLOBS_LIST="
 system/lib64/libeden_wrapper_system.so
 system/lib64/libhigh_dynamic_range.arcsoft.so
 system/lib64/liblow_light_hdr.arcsoft.so
+system/lib64/libhigh_res.arcsoft.so
 system/lib64/libsnap_aidl.snap.samsung.so
 system/lib64/libsuperresolution.arcsoft.so
 system/lib64/libsuperresolution_raw.arcsoft.so

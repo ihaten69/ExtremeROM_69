@@ -20,6 +20,7 @@
 /system/lib64/libmidas_DNNInterface\.camera\.samsung\.so u:object_r:system_lib_file:s0
 /system/lib64/libeden_wrapper_system\.so u:object_r:system_lib_file:s0
 /system/lib64/libhigh_dynamic_range\.arcsoft\.so u:object_r:system_lib_file:s0
+/system/lib64/libhigh_res\.arcsoft\.so u:object_r:system_lib_file:s0
 /system/lib64/liblow_light_hdr\.arcsoft\.so u:object_r:system_lib_file:s0
 /system/lib64/libsnap_aidl\.snap\.samsung\.so u:object_r:system_lib_file:s0
 /system/lib64/libSwIsp_core\.camera\.samsung\.so u:object_r:system_lib_file:s0

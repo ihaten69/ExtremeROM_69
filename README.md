@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="https://t.me/extremerom">💬 Telegram</a>
+  <a href="https://github.com/ExtremeXT/ExtremeROM/wiki">📖 Wiki</a>
 </p>
 
 # What is ExtremeROM Nexus?

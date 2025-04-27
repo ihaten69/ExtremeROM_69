@@ -1,48 +1,25 @@
-From 5bf6f1b0f1bdc9700651ed6fbc5d123a115107cc Mon Sep 17 00:00:00 2001
+From d858f664da7b88b370170f6a61632b81379845ab Mon Sep 17 00:00:00 2001
 From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
-Date: Sun, 27 Apr 2025 23:22:56 +0300
+Date: Mon, 28 Apr 2025 00:40:22 +0300
 Subject: [PATCH] Disable Hotspot Wi-Fi 6
 
 ---
- .../mobileap/utils/WifiApSoftApUtils.smali    | 23 +++----------------
- 1 file changed, 3 insertions(+), 20 deletions(-)
+ .../configure/WifiApConfigureSupportWifi6Controller.smali       | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/smali_classes3/com/samsung/android/settings/wifi/mobileap/utils/WifiApSoftApUtils.smali b/smali_classes3/com/samsung/android/settings/wifi/mobileap/utils/WifiApSoftApUtils.smali
-index d53e38f6e..ac4c02121 100644
---- a/smali_classes3/com/samsung/android/settings/wifi/mobileap/utils/WifiApSoftApUtils.smali
-+++ b/smali_classes3/com/samsung/android/settings/wifi/mobileap/utils/WifiApSoftApUtils.smali
-@@ -605,28 +605,11 @@
+diff --git a/smali_classes3/com/samsung/android/settings/wifi/mobileap/configure/WifiApConfigureSupportWifi6Controller.smali b/smali_classes3/com/samsung/android/settings/wifi/mobileap/configure/WifiApConfigureSupportWifi6Controller.smali
+index 7151c6185..eec27ca5c 100644
+--- a/smali_classes3/com/samsung/android/settings/wifi/mobileap/configure/WifiApConfigureSupportWifi6Controller.smali
++++ b/smali_classes3/com/samsung/android/settings/wifi/mobileap/configure/WifiApConfigureSupportWifi6Controller.smali
+@@ -110,7 +110,7 @@
+ .method public getAvailabilityStatus()I
+     .locals 0
+ 
+-    const/4 p0, 0x0
++    const/4 p0, 0x3
+ 
+     return p0
  .end method
- 
- .method public static isSupportWifi6StandardEnabled(Landroid/content/Context;)Z
--    .locals 2
--
--    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
--
--    move-result-object p0
--
--    const-string/jumbo v0, "wifi_ap_11ax_mode_checked"
--
--    const/4 v1, 0x0
--
--    invoke-static {p0, v0, v1}, Landroid/provider/Settings$Secure;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
--
--    move-result p0
--
--    const/4 v0, 0x1
--
--    if-ne p0, v0, :cond_0
-+    .locals 1
- 
--    move v1, v0
-+    const/4 v0, 0x0
- 
--    :cond_0
--    return v1
-+    return v0
- .end method
- 
- .method public static isWifiSharingEnabled(Landroid/content/Context;)Z
 -- 
 2.45.2
 

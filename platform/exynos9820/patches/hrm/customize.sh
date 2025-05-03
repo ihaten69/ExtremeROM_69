@@ -3,6 +3,7 @@ if [[ "$TARGET_CODENAME" != "beyond0lte" ]]; then
     BLOBS_LIST="
     system/etc/permissions/privapp-permissions-com.sec.android.service.health.xml
     system/etc/permissions/android.hardware.sensor.heartrate.xml
+    system/etc/permissions/com.sec.feature.spo2.xml
     system/lib64/libhr.so
     system/priv-app/HealthServicePAR
     "

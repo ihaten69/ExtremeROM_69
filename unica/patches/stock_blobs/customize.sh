@@ -23,3 +23,7 @@ if [ -f "$TARGET_FIRMWARE_PATH/system/system/usr/share/alsa/alsa.conf" ]; then
 else
     DELETE_FROM_WORK_DIR "system" "system/usr/share/alsa"
 fi
+
+echo "Replacing gamebooster props with stock"
+SET_PROP "product" "ro.gfx.driver.0" "$(GET_PROP "$WORK_DIR/vendor/build.prop" "ro.gfx.driver.0")"
+SET_PROP "product" "ro.gfx.driver.1" "$(GET_PROP "$WORK_DIR/vendor/build.prop" "ro.gfx.driver.1")"

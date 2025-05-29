@@ -45,6 +45,20 @@ do
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
 done
 
+if [[ "$MODEL" == "c1s" || "$MODEL" == "c2s" ]]; then
+    BLOBS_LIST="
+    system/lib64/libofi_seva.so
+    system/lib64/libofi_klm.so
+    system/lib64/libofi_plugin.so
+    system/lib64/libofi_rt_framework_user.so
+    system/lib64/libofi_service_interface.so
+    system/lib64/libofi_gc.so
+    "
+    for blob in $BLOBS_LIST
+    do
+        ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
+    done
+fi
 
 # Add libc++_shared.so dependency for __cxa_demangle symbol
 patchelf --add-needed "libc++_shared.so" "$WORK_DIR/system/system/lib64/libMultiFrameProcessing20Core.camera.samsung.so"

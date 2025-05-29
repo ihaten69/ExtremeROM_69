@@ -1,6 +1,3 @@
-echo "Disabling UFFD GC"
-SET_PROP "product" "ro.dalvik.vm.enable_uffd_gc" "false"
-
 echo "Setting casefold props"
 SET_PROP "vendor" "external_storage.projid.enabled" "1"
 SET_PROP "vendor" "external_storage.casefold.enabled" "1"

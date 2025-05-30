@@ -240,6 +240,7 @@
 /system/lib64/libvkjni\.so u:object_r:system_lib_file:s0
 /system/lib64/libvkmanager\.so u:object_r:system_lib_file:s0
 /system/lib64/vendor\.samsung\.hardware\.security\.vaultkeeper@2\.0\.so u:object_r:system_lib_file:s0
+/system/lib64/vendor\.samsung\.hardware\.security\.engmode@1\.0\.so u:object_r:system_lib_file:s0
 /system/system_ext u:object_r:system_file:s0
 /system/system_ext/apex u:object_r:system_file:s0
 /system/system_ext/apex/com\.android\.vndk\.v33\.apex u:object_r:system_file:s0

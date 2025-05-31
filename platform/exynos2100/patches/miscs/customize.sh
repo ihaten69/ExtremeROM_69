@@ -1,9 +1,3 @@
-echo "Setting casefold props"
-SET_PROP "vendor" "external_storage.projid.enabled" "1"
-SET_PROP "vendor" "external_storage.casefold.enabled" "1"
-SET_PROP "vendor" "external_storage.sdcardfs.enabled" "0"
-SET_PROP "vendor" "persist.sys.fuse.passthrough.enable" "true"
-
 echo "Disable Vulkan"
 SET_PROP "vendor" "ro.hwui.use_vulkan" "false"
 SET_PROP "vendor" "debug.hwui.renderer" "skiagl"

@@ -64,7 +64,7 @@ REPLACE_KERNEL_BINARIES()
 	fi
     else
         rm -rf "$KERNEL_TMP_DIR"
-        git clone "$EXTREMEKRNL_REPO" "$KERNEL_TMP_DIR" --recurse-submodules
+        git clone "$EXTREMEKRNL_REPO" --single-branch "$KERNEL_TMP_DIR" --recurse-submodules
     fi
 
     echo "Running the kernel build script."

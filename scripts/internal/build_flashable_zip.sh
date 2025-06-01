@@ -625,9 +625,9 @@ echo "Creating zip"
 [ -f "$OUT_DIR/$ZIP_FILE_NAME" ] && rm -f "$OUT_DIR/$ZIP_FILE_NAME"
 cd "$TMP_DIR"
 if [ "$NO_COMPRESSION" = "false" ]; then
-    zip -rq0 --store ../$ZIP_FILE_NAME ./*
-else
     zip -rq ../$ZIP_FILE_NAME ./*
+else
+    zip -rq0 --store ../$ZIP_FILE_NAME ./*
 fi
 cd - &> /dev/null
 

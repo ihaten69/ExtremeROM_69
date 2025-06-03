@@ -1,23 +1,3 @@
-# Samsung Internet Browser
-DOWNLOAD_FILE "$(GET_GALAXY_STORE_DOWNLOAD_URL "com.sec.android.app.sbrowser")" \
-    "$WORK_DIR/system/system/preload/SBrowser/SBrowser.apk"
-
-# Samsung Notes
-DOWNLOAD_FILE "$(GET_GALAXY_STORE_DOWNLOAD_URL "com.samsung.android.app.notes")" \
-    "$WORK_DIR/system/system/preload/Notes40_Removable/Notes40_Removable.apk"
-
-# Samsung Calculator
-DOWNLOAD_FILE "$(GET_GALAXY_STORE_DOWNLOAD_URL "com.sec.android.app.popupcalculator")" \
-    "$WORK_DIR/system/system/preload/SecCalculator_R/SecCalculator_R.apk"
-
-# Samsung Clock
-DOWNLOAD_FILE "$(GET_GALAXY_STORE_DOWNLOAD_URL "com.sec.android.app.clockpackage")" \
-    "$WORK_DIR/system/system/preload/ClockPackage/ClockPackage.apk"
-
-# Samsung Voice Recorder
-DOWNLOAD_FILE "$(GET_GALAXY_STORE_DOWNLOAD_URL "com.sec.android.app.voicenote")" \
-    "$WORK_DIR/system/system/preload/VoiceNote_5.0/VoiceNote_5.0.apk"
-
 sed -i "/system\/preload/d" "$WORK_DIR/configs/fs_config-system" \
     && sed -i "/system\/preload/d" "$WORK_DIR/configs/file_context-system"
 while read -r i; do

@@ -20,8 +20,6 @@ ADD_TO_WORK_DIR "$SOURCE_FIRMWARE_PATH" "system" "system/cameradata/myfilter" 0 
 if [ -f "$TARGET_FIRMWARE_PATH/system/system/usr/share/alsa/alsa.conf" ]; then
     echo "Add stock alsa.conf"
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE_PATH" "system" "system/usr/share/alsa/alsa.conf" 0 0 644 "u:object_r:system_file:s0"
-else
-    DELETE_FROM_WORK_DIR "system" "system/usr/share/alsa"
 fi
 
 echo "Replacing gamebooster props with stock"

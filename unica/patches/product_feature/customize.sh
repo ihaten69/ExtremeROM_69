@@ -78,7 +78,7 @@ fi
 if $SOURCE_HAS_QHD_DISPLAY; then
     if ! $TARGET_HAS_QHD_DISPLAY; then
         echo "Applying multi resolution patches"
-        ADD_TO_WORK_DIR "e1sxxx" "system" "."
+        ADD_TO_WORK_DIR "e1qzcx" "system" "."
         APPLY_PATCH "system/framework/framework.jar" "resolution/framework.jar/0001-Disable-dynamic-resolution-control.patch"
         APPLY_PATCH "system/framework/gamemanager.jar" "resolution/gamemanager.jar/0001-Disable-dynamic-resolution-control.patch"
         APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "resolution/SecSettings.apk/0001-Disable-dynamic-resolution-control.patch"
@@ -107,9 +107,9 @@ if [[ "$(GET_FP_SENSOR_TYPE "$SOURCE_FP_SENSOR_CONFIG")" != "$(GET_FP_SENSOR_TYP
     done
 
     if [[ "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" == "optical" ]]; then
-        ADD_TO_WORK_DIR "r12sksx" "system" "system/bin/surfaceflinger"
-        ADD_TO_WORK_DIR "r12sksx" "system" "system/lib64/libgui.so"
-        ADD_TO_WORK_DIR "r12sksx" "system" "system/lib64/libui.so"
+        ADD_TO_WORK_DIR "r12sxxx" "system" "system/bin/surfaceflinger"
+        ADD_TO_WORK_DIR "r12sxxx" "system" "system/lib64/libgui.so"
+        ADD_TO_WORK_DIR "r12sxxx" "system" "system/lib64/libui.so"
         APPLY_PATCH "system/framework/services.jar" "fingerprint/services.jar/0001-Set-FP_FEATURE_SENSOR_IS_ULTRASONIC-to-false.patch"
         APPLY_PATCH "system/priv-app/BiometricSetting/BiometricSetting.apk" "fingerprint/BiometricSetting.apk/0001-Set-FP_FEATURE_SENSOR_IS_ULTRASONIC-to-false.patch"
         APPLY_PATCH "system/priv-app/BiometricSetting/BiometricSetting.apk" "fingerprint/BiometricSetting.apk/0002-Always-use-ultrasonic-FOD-animation.patch"
@@ -246,7 +246,7 @@ if [[ "$SOURCE_DVFS_CONFIG_NAME" != "$TARGET_DVFS_CONFIG_NAME" ]]; then
     system/framework/ssrm.jar/smali/com/android/server/ssrm/Feature.smali
     "
     for f in $FTP; do
-        sed -i "s/$SOURCE_DVFS_CONFIG_NAME/$TARGET_DVFS_CONFIG_NAME/g" "$APKTOOL_DIR/$f"
+        sed -i "s/\"$SOURCE_DVFS_CONFIG_NAME\"/\"$TARGET_DVFS_CONFIG_NAME\"/g" "$APKTOOL_DIR/$f"
     done
 fi
 

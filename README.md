@@ -1,1 +1,1 @@
-# MOVING TO https://gitlab.librecloud.cc/osrott61/ExtremeROM-Kebab
+# MOVING TO https://git.extremerom.org/osrott61/ExtremeROM-Kebab

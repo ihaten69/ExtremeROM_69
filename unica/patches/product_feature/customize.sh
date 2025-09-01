@@ -73,17 +73,9 @@ if [[ "$SOURCE_AUTO_BRIGHTNESS_TYPE" != "$TARGET_AUTO_BRIGHTNESS_TYPE" && "$TARG
     if [[ "$TARGET_AUTO_BRIGHTNESS_TYPE" == "3" ]]; then
         HEX_PATCH "$WORK_DIR/system/system/lib64/libsensorservice.so" "0660009420008052" "0660009400008052"
     fi
-fi
 
-if $SOURCE_HAS_QHD_DISPLAY; then
-    if ! $TARGET_HAS_QHD_DISPLAY; then
-        echo "Applying multi resolution patches"
-        ADD_TO_WORK_DIR "e1qzcx" "system" "."
-        APPLY_PATCH "system/framework/framework.jar" "resolution/framework.jar/0001-Disable-dynamic-resolution-control.patch"
-        APPLY_PATCH "system/framework/gamemanager.jar" "resolution/gamemanager.jar/0001-Disable-dynamic-resolution-control.patch"
-        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "resolution/SecSettings.apk/0001-Disable-dynamic-resolution-control.patch"
-    fi
-fi
+
+
 
 if [[ "$(GET_FP_SENSOR_TYPE "$SOURCE_FP_SENSOR_CONFIG")" != "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" ]]; then
     echo "Applying fingerprint sensor patches"

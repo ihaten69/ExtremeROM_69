@@ -91,7 +91,8 @@ if $BUILD_ROM; then
         bash "$SRC_DIR/scripts/download_fw.sh"
         bash "$SRC_DIR/scripts/extract_fw.sh"
     fi
-
+    echo -e "- Deleting source super.img..."
+    rm -rf $FW_DIR/SM-S938B_EUX/super.img
     echo -e "- Creating work dir..."
     bash "$SRC_DIR/scripts/internal/create_work_dir.sh"
 

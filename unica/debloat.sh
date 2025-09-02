@@ -154,7 +154,6 @@ system/priv-app/SOAgent75
 system/priv-app/SPPPushClient
 system/priv-app/StickerFaceARAvatar
 system/priv-app/YourPhone_P1_5
-system/priv-app/wallpaper-res
 system/priv-app/SamsungSmartSuggestions
 "
 

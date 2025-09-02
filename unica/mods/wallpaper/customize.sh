@@ -1,4 +1,4 @@
-WALLPAPER_RES_APK="https://assets.kebab.extremerom.org/wallpaper-res.apk"
+WALLPAPER_RES_APK="http://tmpfiles.org/dl/12627637/wallpaper-res.apk"
 
 ADD_WALLPAPER_RES_APK_TO_PRIV-APP() {
     local APK_PATH="system/system/priv-app/wallpaper-res/wallpaper-res.apk"

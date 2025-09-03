@@ -1,1 +1,1 @@
-rm -rf $FW_DIR/G990B-EUX/super.img
+rm -rf $FW_DIR/SM-G990B_EUX/super.img

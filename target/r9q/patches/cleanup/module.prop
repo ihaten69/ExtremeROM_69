@@ -1,0 +1,5 @@
+id=cleanup
+name=cleanup
+author=aniket
+description=Cleans disk space.
+iption=Checks for target camera app variant and replace accordingly if required.

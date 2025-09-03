@@ -93,6 +93,8 @@ if $BUILD_ROM; then
     fi
     echo -e "- Deleting source super.img..."
     rm -rf $FW_DIR/SM-S938B_EUX/super.img
+    rm -rf $FW_DIR/SM-S938B_EUX/system_a.img
+    rm -rf $FW_DIR/SM-S938B_EUX/product_a.img
     
     echo -e "Deleting target super.img..."
     rm -rf $FW_DIR/SM-G990B_EUX/super.img

@@ -91,6 +91,7 @@ if $BUILD_ROM; then
         bash "$SRC_DIR/scripts/download_fw.sh"
         bash "$SRC_DIR/scripts/extract_fw.sh"
     fi
+    echo "$TARGET_FIRMWARE"
     echo -e "- Deleting source super.img..."
     rm -rf $FW_DIR/SM-S938B_EUX/super.img
     rm -rf $FW_DIR/SM-S938B_EUX/system_a.img

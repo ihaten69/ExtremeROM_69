@@ -23,7 +23,7 @@ ROM_CODENAME="EquinoX"
 # Source ROM firmware
 case "$TARGET_SINGLE_SYSTEM_IMAGE" in
     "qssi")
-        # Galaxy S25 Ultra (One UI 7)
+        # Galaxy S25 Edge (One UI 7)
         SOURCE_CODENAME="psq"
         SOURCE_FIRMWARE="SM-S937B/EUX/350046320813875"
         SOURCE_EXTRA_FIRMWARES=()
